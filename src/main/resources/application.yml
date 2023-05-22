@@ -1,0 +1,11 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+spring:
+  application:
+    name: pandora
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pandora
+    username: postgres
+    password: postgres
