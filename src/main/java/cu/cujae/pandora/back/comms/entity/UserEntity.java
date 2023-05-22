@@ -1,11 +1,9 @@
 package cu.cujae.pandora.back.comms.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "ldap_user")
@@ -27,4 +25,11 @@ public class UserEntity {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_role", nullable = false)
     private Role role;
+
+    private String email;
+    private String ci;
+    private String name;
+    private String lastname;
+    private String surname;
+    private String status;
 }

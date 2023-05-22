@@ -2,14 +2,18 @@ package cu.cujae.pandora.back.auth.service;
 
 import cu.cujae.pandora.back.auth.dto.LoginDto;
 import cu.cujae.pandora.back.auth.dto.RegisterDto;
+import cu.cujae.pandora.back.comms.dto.LdapLoginRequest;
+import cu.cujae.pandora.back.comms.dto.LdapLoginResponse;
 import cu.cujae.pandora.back.comms.entity.Role;
 import cu.cujae.pandora.back.comms.entity.Token;
 import cu.cujae.pandora.back.comms.entity.UserEntity;
 import cu.cujae.pandora.back.comms.exception.ErrorCodes;
 import cu.cujae.pandora.back.comms.exception.InvalidClientRequestException;
+import cu.cujae.pandora.back.comms.exception.ServerSideException;
 import cu.cujae.pandora.back.comms.repository.RoleRepository;
 import cu.cujae.pandora.back.comms.repository.TokenRepository;
 import cu.cujae.pandora.back.comms.repository.UserRepository;
+import cu.cujae.pandora.back.comms.service.LdapService;
 import cu.cujae.pandora.back.security.JWTGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -37,19 +41,25 @@ public class AuthService {
     private JWTGenerator jwtGenerator;
     @Autowired
     private AuthenticationManager authenticationManager;
+    @Autowired
+    private LdapService ldapService;
 
     public String login(LoginDto loginDto){
-        //Todo: check if exist in ldap
+        LdapLoginResponse ldapUser = ldapService.getLogin(new LdapLoginRequest(loginDto.getUsername(), loginDto.getPassword()));
+        if (ldapUser == null && !ldapUser.getStatus().equals("Active")){
+            throw new ServerSideException("LDAP: Unknown error", ErrorCodes.SERVER_UNKNOWN_ERROR.getErrorCode());
+        }
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String stringToken = jwtGenerator.generateToken(authentication);
         UserEntity user = userRepository.findByUsername(loginDto.getUsername()).orElseThrow();
-        Token token = new Token();
-        token.setToken(stringToken);
-        token.setExpired(false);
-        token.setRevoked(false);
-        token.setUser(user);
+        Token token = Token.builder()
+            .token(stringToken)
+            .expired(false)
+            .revoked(false)
+            .user(user)
+            .build();
         revokeAllUserTokens(user);
         tokenRepository.save(token);
         return stringToken;
@@ -59,9 +69,19 @@ public class AuthService {
         if (userRepository.existsByUsername(registerDto.getUsername())) {
             throw new InvalidClientRequestException("Username already exists!", ErrorCodes.CLIENT_USERNAME_TAKEN.getErrorCode());
         }
+        LdapLoginResponse ldapUser = ldapService.getLogin(new LdapLoginRequest(registerDto.getUsername(), registerDto.getPassword()));
+        if (ldapUser == null && !ldapUser.getStatus().equals("Active")){
+            throw new ServerSideException("LDAP: Unknown error", ErrorCodes.SERVER_UNKNOWN_ERROR.getErrorCode());
+        }
         UserEntity user = new UserEntity();
         user.setUsername(registerDto.getUsername());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
+        user.setEmail(ldapUser.getEmail());
+        user.setCi(ldapUser.getIdentification());
+        user.setName(ldapUser.getName());
+        user.setLastname(ldapUser.getLastname());
+        user.setSurname(ldapUser.getSurname());
+        user.setStatus(ldapUser.getStatus());
 
         Role role = roleRepository.findByRoleName("USER").get();
         user.setRole(role);
