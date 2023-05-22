@@ -9,3 +9,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/pandora
     username: postgres
     password: postgres
+
+ldap:
+  url: https://url.to.cujae/ldap
+  username: ldap-username
+  password: ldap-password
