@@ -41,7 +41,6 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/auth/login").permitAll()
-                .antMatchers("/auth/register").permitAll()
                 .antMatchers("/test/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
