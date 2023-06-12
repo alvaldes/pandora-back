@@ -53,8 +53,7 @@ public class AuthService {
                 new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String stringToken = jwtGenerator.generateToken(authentication);
-        //UserEntity user = userRepository.findByUsername(loginDto.getUsername()).orElseThrow();
-        UserEntity user = userRepository.findByUsername(loginDto.getUsername());
+        UserEntity user = userRepository.findByUsername(loginDto.getUsername()).orElseThrow();
         Token token = Token.builder()
             .token(stringToken)
             .expired(false)
@@ -84,11 +83,10 @@ public class AuthService {
         user.setSurname(ldapUser.getSurname());
         user.setStatus(ldapUser.getStatus());
 
-        //Role role = roleRepository.findByRolename("USER").get();
-        Role role = roleRepository.findByRolename("USER");
+        Role role = roleRepository.findByRoleName("USER").get();
         user.setRole(role);
 
-        userRepository.insertLdapUser(user);
+        userRepository.save(user);
         return user;
     }
 

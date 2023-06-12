@@ -11,10 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class UserEntity {
 
-
-		// TODO Auto-generated constructor stub
-	
-	@Id
+    @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Long id;
