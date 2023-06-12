@@ -11,6 +11,6 @@ spring:
     password: postgres
 
 ldap:
-  url: https://url.to.cujae/ldap
-  username: ldap-username
-  password: ldap-password
+  url: https://sigenu.cujae.edu.cu/sigenu-ldap-cujae/ldap
+  username: disertic.ldap
+  password: disertic*2022*ldap
