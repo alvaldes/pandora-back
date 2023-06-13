@@ -37,7 +37,7 @@ public class LdapFullLoginResponse {
     private String objectSid;
     private List<String> otherMailbox = new ArrayList<>();
     private String pager;
-    private int primaryGroupID;
+    private String primaryGroupID;
     private double pwdLastSet;
     private String sAMAccountName;
     private int sAMAccountType;
