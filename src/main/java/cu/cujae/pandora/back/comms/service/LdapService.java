@@ -12,11 +12,11 @@ public class LdapService {
     @Autowired
     private LdapClient ldapClient;
 
-    public LdapLoginResponse getLogin(LdapLoginRequest request){
+    public LdapLoginResponse getLogin(LdapLoginRequest request) {
         return ldapClient.login(request);
     }
 
-    public LdapFullLoginResponse getFullLogin(LdapLoginRequest request){
-        return ldapClient.fullLogin(request);
+    public LdapFullLoginResponse getFullLogin(LdapLoginRequest request) {
+        return ldapClient.fullLogin(request).getUser();
     }
 }
