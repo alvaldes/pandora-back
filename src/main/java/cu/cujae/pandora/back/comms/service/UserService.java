@@ -11,28 +11,24 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	public UserEntity insertLdapUser (UserEntity u) {
-		return userRepository.insertLdapUser(u);
+	public UserEntity save (UserEntity user) {
+		return userRepository.save(user);
 	}
 	
 	public void deleteLdapUser (Long id) {
-		userRepository.deleteLdapUser(id);
-	}
-	
-	public UserEntity updateLdapUser (UserEntity u) {
-		return userRepository.updateLdapUser(u);
+		userRepository.deleteById(id);
 	}
 	
 	public List <UserEntity> getAllLdapUsers(){
-		return userRepository.getAllLdapUsers();
+		return userRepository.findAll();
 	}
 	
 	public UserEntity getLdapUserById (Long id) {
-		return userRepository.getLdapUserById(id);
+		return userRepository.findById(id).get();
 	}
 	
 	public UserEntity findByUsername(String username) {
-		return userRepository.findByUsername(username);
+		return userRepository.findByUsername(username).get();
 	}
 	
 	public Boolean existsByUsername (String username) {

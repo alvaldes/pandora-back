@@ -17,27 +17,19 @@ public class RoleService {
 	@Autowired
 	RoleRepository roleRepository;
 	
-	public Role insertLdapRole(Role r) {
-		return roleRepository.insertLdapRole(r);
+	public Role save(Role role) {
+		return roleRepository.save(role);
 	}
-	
-	public void deleteLdapRole(Long id) {
-		roleRepository.deleteLdapRole(id);
+	public void delete(Long id) {
+		roleRepository.deleteById(id);
 	}
-	
-	public Role updateLdapRole(Role r) {
-		return roleRepository.updateLdapRole(r);
+	public List<Role> findAll(){
+		return roleRepository.findAll();
 	}
-	
-	public List<Role> getAllLdapRoles(){
-		return roleRepository.getAllLdapRoles();
+	public Role findById(Long id) {
+		return roleRepository.findById(id).get();
 	}
-	
-	public Role getLdapRoleById(Long id) {
-		return roleRepository.getLdapRoleById(id);
-	}
-	
 	public Role findByRoleName (String name) {
-		return roleRepository.findByRoleName(name);
+		return roleRepository.findByRoleName(name).get();
 	}
 }
