@@ -24,7 +24,7 @@ public class UserEntity {
     @Column(name = "password")
     private String password;
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_role", nullable = false)
+    @JoinColumn(name = "id_role", nullable = false) 
     private Role role;
     @Column(name = "email")
     private String email;
@@ -38,4 +38,5 @@ public class UserEntity {
     private String position;
     @Column(name = "status")
     private String status;
+    
 }
