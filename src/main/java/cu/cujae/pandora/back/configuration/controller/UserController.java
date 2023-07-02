@@ -45,4 +45,9 @@ public class UserController {
     public ResponseEntity<UserDTO> getLdapUserById(@PathVariable("id") Long id) {
             return new ResponseEntity<>(userService.getLdapUserById(id), HttpStatus.OK);
     }
+
+    @GetMapping("username/{name}")
+    public ResponseEntity<UserDTO> getLdapUserById(@PathVariable("name") String name) {
+        return new ResponseEntity<>(userService.findByUsername(name), HttpStatus.OK);
+    }
 }
