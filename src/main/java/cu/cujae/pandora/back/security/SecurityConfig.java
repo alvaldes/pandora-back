@@ -41,7 +41,8 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/auth/login").permitAll()
-                .antMatchers("/test/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/config/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/academic/**").hasAnyAuthority("ADMIN","USER")
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
