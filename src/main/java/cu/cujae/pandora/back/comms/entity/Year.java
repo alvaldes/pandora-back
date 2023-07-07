@@ -12,6 +12,9 @@ import javax.persistence.*;
 public class Year {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_year;
+    @Column(name = "id_year")
+    private Long id;
+    
+    @Column(name = "year_name")
     private String year_name;
 }
