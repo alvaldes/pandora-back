@@ -8,14 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cu.cujae.pandora.back.comms.dto.CourseDTO;
-import cu.cujae.pandora.back.comms.dto.RoleDTO;
 import cu.cujae.pandora.back.comms.entity.Course;
-import cu.cujae.pandora.back.comms.entity.Role;
 import cu.cujae.pandora.back.comms.exception.ErrorCodes;
 import cu.cujae.pandora.back.comms.exception.InvalidClientRequestException;
 import cu.cujae.pandora.back.comms.mapper.DomainMapper;
 import cu.cujae.pandora.back.comms.repository.CourseRepository;
-import cu.cujae.pandora.back.comms.repository.RoleRepository;
 
 @Service
 public class CourseService {
@@ -50,6 +47,10 @@ public class CourseService {
             throw new InvalidClientRequestException("Course not found with name: " + name, ErrorCodes.CLIENT_INVALID_PARAMETER.getErrorCode());
         }
         return mapper.toCourseDto(optionalCourse.get());
+    }
+    
+    public Boolean existByCourseName(String course_name) {
+        return courseRepository.existByCourseName(course_name);
     }
 }
 

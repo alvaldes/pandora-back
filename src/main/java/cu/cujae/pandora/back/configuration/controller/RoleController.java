@@ -1,9 +1,7 @@
 package cu.cujae.pandora.back.configuration.controller;
 
 import cu.cujae.pandora.back.comms.dto.RoleDTO;
-import cu.cujae.pandora.back.comms.mapper.DomainMapper;
 import cu.cujae.pandora.back.comms.service.RoleService;
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

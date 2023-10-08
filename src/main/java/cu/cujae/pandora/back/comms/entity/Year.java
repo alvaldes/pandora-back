@@ -3,6 +3,8 @@ package cu.cujae.pandora.back.comms.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,5 +18,9 @@ public class Year {
     private Long id;
     
     @Column(name = "year_name")
-    private String year_name;
+    private String yearName;
+    
+    @OneToMany(mappedBy = "year", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SubjectPlan> subjectsPlans;
+    
 }

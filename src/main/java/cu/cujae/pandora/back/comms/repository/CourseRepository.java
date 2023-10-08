@@ -10,9 +10,9 @@ import cu.cujae.pandora.back.comms.entity.Course;
 
 @Repository
 public interface CourseRepository extends CrudRepository<Course, Long> {
-    Optional<Course> findByCourseName(String course_name);
+    Optional<Course> findByCourseName(String courseName);
 
-    Boolean existsByCoursename(String course_name);
+    Boolean existByCourseName(String courseName);
 
     List<Course> findAll();
 }

@@ -12,9 +12,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface YearRepository extends CrudRepository<Year, Long> {
-	Optional<Year> findByYearName(String year_name);
+	Optional<Year> findByYearName(String yearName);
 
-    Boolean existsByYearName(String year_name);
+    Boolean existByYearName(String yearName);
 
     List<Year> findAll();
 }
