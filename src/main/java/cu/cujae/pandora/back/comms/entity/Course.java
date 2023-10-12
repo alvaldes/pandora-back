@@ -27,13 +27,13 @@ public class Course {
     private Long id;
     
     @Column(name = "course")
-    private String course_name;
+    private String courseName;
 
     @Column(name = "begin_date")
-    private Timestamp begin_date;
+    private Timestamp beginDate;
 
     @Column(name = "end_date")
-    private Timestamp end_date;
+    private Timestamp endDate;
  
     @Column(name = "active")
     private boolean active;

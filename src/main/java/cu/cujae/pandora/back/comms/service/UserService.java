@@ -6,6 +6,7 @@ import cu.cujae.pandora.back.comms.exception.ErrorCodes;
 import cu.cujae.pandora.back.comms.exception.InvalidClientRequestException;
 import cu.cujae.pandora.back.comms.mapper.DomainMapper;
 import cu.cujae.pandora.back.comms.repository.UserRepository;
+import cu.cujae.pandora.back.comms.utils.CommsConstants;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,10 @@ public class UserService {
     }
 
     public void deleteLdapUser(Long id) {
-        userRepository.deleteById(id);
+        Optional<UserEntity> user = userRepository.findById(id);
+        user.orElseThrow(() -> new InvalidClientRequestException("User not found with id: " + id, ErrorCodes.CLIENT_INVALID_PARAMETER.getErrorCode()))
+                .setStatus(CommsConstants.USER_STATUS_DELETED);
+        userRepository.save(user.get());
     }
 
     public List<UserDTO> getAllLdapUsers() {

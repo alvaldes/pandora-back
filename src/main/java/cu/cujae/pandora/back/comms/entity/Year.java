@@ -16,5 +16,5 @@ public class Year {
     private Long id;
     
     @Column(name = "year_name")
-    private String year_name;
+    private String yearName;
 }
