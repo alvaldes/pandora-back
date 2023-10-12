@@ -50,7 +50,7 @@ public class CareerService {
         return mapper.toCareerDto(optionalCareer.get());
     }
     
-    public Boolean existByCareerName(String careerName) {
-        return careerRepository.existByCareerName(careerName);
+    public Boolean existsByCareerName(String careerName) {
+        return careerRepository.existsByCareerName(careerName);
     }
 }

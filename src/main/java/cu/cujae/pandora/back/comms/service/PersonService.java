@@ -50,7 +50,7 @@ public class PersonService {
         return mapper.toPersonDto(optionalPerson.get());
     }
 
-    public Boolean existByPersonName(String personName) {
-        return personRepository.existByPersonName(personName);
+    public Boolean existsByPersonName(String personName) {
+        return personRepository.existsByPersonName(personName);
     }
 }

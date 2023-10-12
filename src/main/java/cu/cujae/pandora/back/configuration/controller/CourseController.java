@@ -56,7 +56,7 @@ public class CourseController {
     }
     
     @GetMapping("exist_course_name/{courseName}")
-    public ResponseEntity<CourseDTO> existByCourseName(@PathVariable("courseName") String courseName) {
+    public ResponseEntity<CourseDTO> existsByCourseName(@PathVariable("courseName") String courseName) {
         return new ResponseEntity<>(courseService.findByCourseName(courseName), HttpStatus.OK);
     }
 

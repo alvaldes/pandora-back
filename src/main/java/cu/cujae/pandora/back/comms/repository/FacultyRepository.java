@@ -12,7 +12,7 @@ import cu.cujae.pandora.back.comms.entity.Faculty;
 public interface FacultyRepository extends CrudRepository<Faculty, Long> {
     Optional<Faculty> findByFacultyName(String facultyName);
 
-    Boolean existByFacultyName(String facultyName);
+    Boolean existsByFacultyName(String facultyName);
 
     List<Faculty> findAll();
 }

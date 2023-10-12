@@ -14,7 +14,7 @@ public interface SubjectPlanRepository extends CrudRepository<SubjectPlan, Long>
 
     List<SubjectPlan> findAll();
 
-    Boolean existBySubjectPlanName(String subjectName);
+    Boolean existsBySubjectPlanName(String subjectName);
 
 	Optional<SubjectPlan> findBySubjectPlanName(String subjectPlanName);
 }

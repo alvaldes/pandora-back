@@ -56,7 +56,7 @@ public class PersonController {
     }
     
     @GetMapping("exist_person_name/{personName}")
-    public ResponseEntity<PersonDTO> existByPersonName(@PathVariable("personName") String personName) {
+    public ResponseEntity<PersonDTO> existsByPersonName(@PathVariable("personName") String personName) {
         return new ResponseEntity<>(personService.findByPersonName(personName), HttpStatus.OK);
     }
 }

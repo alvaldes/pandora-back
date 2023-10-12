@@ -51,8 +51,8 @@ public class SemesterService {
         return mapper.toSemesterDto(optionalSemester.get());
     }
     
-    public Boolean existBySemesterName(String semesterName) {
-        return semesterRepository.existBySemesterName(semesterName);
+    public Boolean existsBySemesterName(String semesterName) {
+        return semesterRepository.existsBySemesterName(semesterName);
     }
 }
 

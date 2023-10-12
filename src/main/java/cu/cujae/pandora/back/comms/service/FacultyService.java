@@ -52,7 +52,7 @@ public class FacultyService {
         return mapper.toFacultyDto(optionalFaculty.get());
     }
     
-    public Boolean existByFacultyName(String facultyName) {
-        return facultyRepository.existByFacultyName(facultyName);
+    public Boolean existsByFacultyName(String facultyName) {
+        return facultyRepository.existsByFacultyName(facultyName);
     }
 }

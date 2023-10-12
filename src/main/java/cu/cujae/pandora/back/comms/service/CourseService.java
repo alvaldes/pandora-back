@@ -49,8 +49,8 @@ public class CourseService {
         return mapper.toCourseDto(optionalCourse.get());
     }
     
-    public Boolean existByCourseName(String course_name) {
-        return courseRepository.existByCourseName(course_name);
+    public Boolean existsByCourseName(String course_name) {
+        return courseRepository.existsByCourseName(course_name);
     }
 }
 

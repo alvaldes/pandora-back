@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 public interface YearRepository extends CrudRepository<Year, Long> {
 	Optional<Year> findByYearName(String yearName);
 
-    Boolean existByYearName(String yearName);
+    Boolean existsByYearName(String yearName);
 
     List<Year> findAll();
 }

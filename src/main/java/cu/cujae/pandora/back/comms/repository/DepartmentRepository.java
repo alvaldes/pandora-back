@@ -13,7 +13,7 @@ public interface DepartmentRepository extends CrudRepository<Department, Long> {
 
     List<Department> findAll();
     
-    Boolean existByDepartmentName(String departmentName);
+    Boolean existsByDepartmentName(String departmentName);
 }
 
 

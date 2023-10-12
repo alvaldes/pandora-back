@@ -55,7 +55,7 @@ public class DepartmentController {
     }
     
     @GetMapping("exist_department_name/{departmentName}")
-    public ResponseEntity<DepartmentDTO> existByDepartmentName(@PathVariable("departmentName") String departmentName) {
+    public ResponseEntity<DepartmentDTO> existsByDepartmentName(@PathVariable("departmentName") String departmentName) {
         return new ResponseEntity<>(departmentService.findByDepartmentName(departmentName), HttpStatus.OK);
     }
 

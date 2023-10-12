@@ -55,7 +55,7 @@ public class YearController {
 	    }
 	    
 	    @GetMapping("exist_year_name/{yearName}")
-	    public ResponseEntity<YearDTO> existByYearName(@PathVariable("yearName") String yearName) {
+	    public ResponseEntity<YearDTO> existsByYearName(@PathVariable("yearName") String yearName) {
 	        return new ResponseEntity<>(yearService.findByYearName(yearName), HttpStatus.OK);
 	    }
 

@@ -51,7 +51,7 @@ public class DisciplineService {
         return mapper.toDisciplineDto(optionalDiscipline.get());
     }
 
-    public Boolean existByDisciplineName(String disciplineName) {
-        return disciplineRepository.existByDisciplineName(disciplineName);
+    public Boolean existsByDisciplineName(String disciplineName) {
+        return disciplineRepository.existsByDisciplineName(disciplineName);
     }
 }

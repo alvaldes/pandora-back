@@ -52,8 +52,8 @@ public class SubjectPlanService {
         return mapper.toSubjectPlanDto(optionalSubjectPlan.get());
     }
     
-    public Boolean existBySubjectPlanName(String subjectPlanName) {
-        return subjectPlanRepository.existBySubjectPlanName(subjectPlanName);
+    public Boolean existsBySubjectPlanName(String subjectPlanName) {
+        return subjectPlanRepository.existsBySubjectPlanName(subjectPlanName);
     }
 }
 

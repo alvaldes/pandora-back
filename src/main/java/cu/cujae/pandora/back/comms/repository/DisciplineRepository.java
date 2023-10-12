@@ -12,7 +12,7 @@ import cu.cujae.pandora.back.comms.entity.Discipline;
 public interface DisciplineRepository extends CrudRepository<Discipline, Long> {
     Optional<Discipline> findByDisciplineName(String disciplineName);
 
-    Boolean existByDisciplineName(String disciplineName);
+    Boolean existsByDisciplineName(String disciplineName);
 
     List<Discipline> findAll();
 }

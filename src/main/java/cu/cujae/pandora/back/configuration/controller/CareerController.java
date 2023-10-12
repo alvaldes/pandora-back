@@ -56,7 +56,7 @@ public class CareerController {
 	    }
 	    
 	    @GetMapping("exist_career_name/{careerName}")
-	    public ResponseEntity<CareerDTO> existByCareerName(@PathVariable("careerName") String careerName) {
+	    public ResponseEntity<CareerDTO> existsByCareerName(@PathVariable("careerName") String careerName) {
 	        return new ResponseEntity<>(careerService.findByCareerName(careerName), HttpStatus.OK);
 	    }
 

@@ -14,5 +14,5 @@ public interface SemesterRepository extends CrudRepository<Semester, Long> {
 
     List<Semester> findAll();
 
-    Boolean existBySemesterName(String semesterName);
+    Boolean existsBySemesterName(String semesterName);
 }

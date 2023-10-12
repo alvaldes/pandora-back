@@ -17,5 +17,4 @@ public interface CareerRepository extends CrudRepository<Career, Long> {
 
     List<Career> findAll();
 
-    Boolean existByCareerName(String careerName);
 }

@@ -57,7 +57,7 @@ public class FacultyController {
     }
     
     @GetMapping("exist_faculty_name/{facultyName}")
-    public ResponseEntity<FacultyDTO> existByFacultyName(@PathVariable("facultyName") String facultyName) {
+    public ResponseEntity<FacultyDTO> existsByFacultyName(@PathVariable("facultyName") String facultyName) {
         return new ResponseEntity<>(facultyService.findByFacultyName(facultyName), HttpStatus.OK);
     }
 

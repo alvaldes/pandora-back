@@ -48,7 +48,7 @@ public class YearService {
         return mapper.toYearDto(optionalYear.get());
     }
 
-    public Boolean existByYearName(String yearName) {
-        return yearRepository.existByYearName(yearName);
+    public Boolean existsByYearName(String yearName) {
+        return yearRepository.existsByYearName(yearName);
     }
 }

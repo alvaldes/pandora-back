@@ -55,7 +55,7 @@ public class SemesterController {
     }
     
     @GetMapping("exist_semester_name/{semesterName}")
-    public ResponseEntity<SemesterDTO> existBySemesterName(@PathVariable("semesterName") String semesterName) {
+    public ResponseEntity<SemesterDTO> existsBySemesterName(@PathVariable("semesterName") String semesterName) {
         return new ResponseEntity<>(semesterService.findBySemesterName(semesterName), HttpStatus.OK);
     }
 

@@ -12,7 +12,7 @@ import cu.cujae.pandora.back.comms.entity.Person;
 public interface PersonRepository extends CrudRepository<Person, Long> {
     Optional<Person> findByPersonName(String personName);
 
-    Boolean existByPersonName(String personName);
+    Boolean existsByPersonName(String personName);
 
     List<Person> findAll();
 }

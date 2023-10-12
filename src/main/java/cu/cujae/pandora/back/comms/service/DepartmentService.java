@@ -48,6 +48,6 @@ public class DepartmentService {
     }
 
     public Boolean existsByDepartmentName(String departmentName) {
-        return departmentRepository.existByDepartmentName(departmentName);
+        return departmentRepository.existsByDepartmentName(departmentName);
     }
 }
