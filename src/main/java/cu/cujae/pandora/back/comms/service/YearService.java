@@ -40,15 +40,15 @@ public class YearService {
         return mapper.toYearDto(optionalYear.get());
     }
 
-    public YearDTO findByYearName(String year_name) {
-        Optional<Year> optionalYear = yearRepository.findByYearName(year_name);
+    public YearDTO findByYearName(String yearName) {
+        Optional<Year> optionalYear = yearRepository.findByYearName(yearName);
         if (optionalYear.isEmpty()) {
-            throw new InvalidClientRequestException("User not found with username: " + year_name, ErrorCodes.CLIENT_INVALID_PARAMETER.getErrorCode());
+            throw new InvalidClientRequestException("User not found with username: " + yearName, ErrorCodes.CLIENT_INVALID_PARAMETER.getErrorCode());
         }
         return mapper.toYearDto(optionalYear.get());
     }
 
-    public Boolean existsByYearName(String year_name) {
-        return yearRepository.existsByYearName(year_name);
+    public Boolean existByYearName(String yearName) {
+        return yearRepository.existByYearName(yearName);
     }
 }

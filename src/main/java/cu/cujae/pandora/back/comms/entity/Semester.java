@@ -1,7 +1,5 @@
 package cu.cujae.pandora.back.comms.entity;
 
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,29 +16,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "course")
+@Table(name = "semester")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Course {
+
+public class Semester {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idcourse")
+    @Column(name = "idsemester")
     private Long id;
     
-    @Column(name = "course")
-    private String courseName;
-
-    @Column(name = "begin_date")
-    private LocalDateTime beginDate;
-
-    @Column(name = "end_date")
-    private LocalDateTime endDate;
- 
-    @Column(name = "active")
-    private boolean active;
+    @Column(name = "semester")
+    private String semesterName;
     
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "semester", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SubjectPlan> subjectsPlans;
+    
 }

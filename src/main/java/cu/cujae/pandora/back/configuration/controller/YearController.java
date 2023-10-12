@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cu.cujae.pandora.back.comms.dto.UserDTO;
 import cu.cujae.pandora.back.comms.dto.YearDTO;
-import cu.cujae.pandora.back.comms.entity.Year;
 import cu.cujae.pandora.back.comms.service.YearService;
 
 @RestController
@@ -51,9 +49,14 @@ public class YearController {
 	            return new ResponseEntity<>(yearService.getYearById(id), HttpStatus.OK);
 	    }
 
-	    @GetMapping("username/{name}")
-	    public ResponseEntity<YearDTO> findByYearName(@PathVariable("name") String name) {
-	        return new ResponseEntity<>(yearService.findByYearName(name), HttpStatus.OK);
+	    @GetMapping("year_name/{yearName}")
+	    public ResponseEntity<YearDTO> findByYearName(@PathVariable("yearName") String yearName) {
+	        return new ResponseEntity<>(yearService.findByYearName(yearName), HttpStatus.OK);
+	    }
+	    
+	    @GetMapping("exist_year_name/{yearName}")
+	    public ResponseEntity<YearDTO> existByYearName(@PathVariable("yearName") String yearName) {
+	        return new ResponseEntity<>(yearService.findByYearName(yearName), HttpStatus.OK);
 	    }
 
 }

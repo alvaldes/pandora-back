@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cu.cujae.pandora.back.comms.dto.CourseDTO;
-import cu.cujae.pandora.back.comms.dto.RoleDTO;
+
 import cu.cujae.pandora.back.comms.service.CourseService;
-import cu.cujae.pandora.back.comms.service.RoleService;
 
 @RestController
 @RequestMapping("/config/course")
@@ -42,7 +41,7 @@ public class CourseController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<CourseDTO>> getCourse() {
+    public ResponseEntity<List<CourseDTO>> getCourses() {
         return new ResponseEntity<>(courseService.findAll(), HttpStatus.OK);
     }
 
@@ -51,9 +50,14 @@ public class CourseController {
         return new ResponseEntity<>(courseService.findById(id), HttpStatus.OK);
     }
 
-    @GetMapping("role_name/{name}")
-    public ResponseEntity<CourseDTO> findByCourseName(@PathVariable("name") String name) {
-        return new ResponseEntity<>(courseService.findByCourseName(name), HttpStatus.OK);
+    @GetMapping("course_name/{courseName}")
+    public ResponseEntity<CourseDTO> findByCourseName(@PathVariable("courseName") String courseName) {
+        return new ResponseEntity<>(courseService.findByCourseName(courseName), HttpStatus.OK);
+    }
+    
+    @GetMapping("exist_course_name/{courseName}")
+    public ResponseEntity<CourseDTO> existByCourseName(@PathVariable("courseName") String courseName) {
+        return new ResponseEntity<>(courseService.findByCourseName(courseName), HttpStatus.OK);
     }
 
 }

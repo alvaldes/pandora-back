@@ -52,7 +52,7 @@ public class AuthService {
             throw new ServerSideException("LDAP: Unknown error", ErrorCodes.SERVER_UNKNOWN_ERROR.getErrorCode());
         }
         UserEntity user = new UserEntity();
-        if (userRepository.existsByUsername(loginDto.getUsername())) {
+        if (userRepository.existByUsername(loginDto.getUsername())) {
             user = userRepository.findByUsername(loginDto.getUsername()).orElseThrow();
         }else {
             user = register(new RegisterDto(loginDto.getUsername(), loginDto.getPassword(), ldapUser));

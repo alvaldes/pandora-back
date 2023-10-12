@@ -1,9 +1,7 @@
 package cu.cujae.pandora.back.comms.dto;
 
-import cu.cujae.pandora.back.comms.entity.Role;
 import lombok.Data;
 
-import javax.persistence.*;
 
 @Data
 public class UserDTO {
